@@ -49,7 +49,41 @@ let questions = [{
  let countdown = 75;
  let duration;
 
-function timer() {
+ document.getElementById(start).addEventListener('click', timer);
+
+ let questionStart = function(question) {
+    questionBox.innerHTML = '';
+ 
+    let header = document.createElement('h2');
+    header.textContent = question.
+
+
+
+
+
+
+
+
+
+
+
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ function timer() {
     timerStart.textContent = "Time Left" + countdown;
     duration = setInterval(function() {
         if (countdown > 0) {
