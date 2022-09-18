@@ -43,6 +43,30 @@ let questions = [{
     answer: "Parenthesis",
  }];
 
+ let timerStart = document.getElementById('timer');
+ let questionBox = document.getElementById ('#quiz'); 
+ let startQuiz = document.getElementById('start');
+ let countdown = 75;
+ let duration;
+
+function timer() {
+    timerStart.textContent = "Time Left" + countdown;
+    duration = setInterval(function() {
+        if (countdown > 0) {
+           reduceTime(-1); 
+        } else {
+            quizOver();
+        }
+    }, 1000);
+}
+
+function reduceTime(remaining) {
+    countdown += remaining;
+    if (countdown < 0) {
+        countdown = 0;
+    }
+    timerStart.textContent = "Time Left" + countdown;
+}
 
 
 
