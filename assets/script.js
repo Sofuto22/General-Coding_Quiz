@@ -55,18 +55,29 @@ let questions = [{
     questionBox.innerHTML = '';
  
     let header = document.createElement('h2');
-    header.textContent = question.
+    header.textContent = question.q;
 
+    let result1 = document.createElement('button');
+    result1.textContent = question.a;
+    result1.addEventListener('click', answerClick);
 
+    let result2 = document.createElement('button');
+    result2.textContent = question.b;
+    result2.addEventListener('click', answerClick);
 
+    let result3 = document.createElement('button');
+    result3.textContent = question.c;
+    result3.addEventListener('click', answerClick);
 
+    let result4 = document.createElement('button');
+    result4.textContent = question.d;
+    result4.addEventListener('click', answerClick);
 
-
-
-
-
-
-
+    questionBox.appendChild(questionBox);
+    questionBox.appendChild(result1);
+    questionBox.appendChild(result2);
+    questionBox.appendChild(result3);
+    questionBox.appendChild(result4);
 }
  
  
