@@ -1,5 +1,5 @@
 let questions = [{
-    1: "String values must be enclosed within ___ when being assigned to a variable.",
+    q: "String values must be enclosed within ___ when being assigned to a variable.",
     A: "Commas",
     B: "Curly Brackets",
     C: "Quotes",
@@ -8,7 +8,7 @@ let questions = [{
 },
 
 {
-    2:" A very useful tool used during development and debugging for printing content to the debugger is?",
+    q:" A very useful tool used during development and debugging for printing content to the debugger is?",
     A:"Javascript",
     B:"Terminal",
     C:"for loops",
@@ -17,7 +17,7 @@ let questions = [{
 },
 
 {
-    3:"Commly used data types do not include?",
+    q:"Commly used data types do not include?",
     A:"Strings",
     B:"Booleans",
     C:"Alerts",
@@ -26,7 +26,7 @@ let questions = [{
 },
  
 {   
-    4:"Arrays in Javascript can be used to store ___?",
+    q:"Arrays in Javascript can be used to store ___?",
     A:"Booleans",
     B:"Other Arrays",
     C:"Numbers/Strings",
@@ -35,7 +35,7 @@ let questions = [{
  },
  
  {
-    5:"The condition in an if/else statement is enclosed with ___?", 
+    q:"The condition in an if/else statement is enclosed with ___?", 
     A:"Curly Brackets",
     B:"Quotes",
     C:"Square Brackets",
@@ -49,8 +49,8 @@ let questions = [{
  let countdown = 75;
  let duration;
 
- document.getElementById(start).addEventListener('click', timer);
 
+timerStart.onclick = timer;
  let questionStart = function(question) {
     questionBox.innerHTML = '';
  
@@ -73,12 +73,37 @@ let questions = [{
     result4.textContent = question.d;
     result4.addEventListener('click', answerClick);
 
-    questionBox.appendChild(questionBox);
+    questionBox.appendChild(header);
     questionBox.appendChild(result1);
     questionBox.appendChild(result2);
     questionBox.appendChild(result3);
     questionBox.appendChild(result4);
 }
+
+let questionIndex = 0;
+let playerScore = 0;
+let correctChoice = questions[questionIndex].answer;
+let recentScores =  document.getElementById('scores');
+
+let answerClick = function(event) {
+    let playerAnswer = event.target.textContent;
+    correctChoice = questions[questionIndex].answer;
+    let playerChoice = document.querySelector('#points');
+    if (playerAnswer !== correctChoice) {
+        reduceTime(-15);
+        playerChoice.textContent = 'Incorrect';
+        questionIndex++;
+    if (questionIndex >= questions.length) {
+        finishQuiz();
+    } else {questionStart(questions[questionIndex])};   
+  } else if (playerAnswer === correctChoice) {
+    questionIndex++;
+    correctChoice.textContent = 'Correct';
+    playerScore++;
+    
+  }
+
+};
  
  
  
@@ -95,7 +120,7 @@ let questions = [{
  
  
  function timer() {
-    timerStart.textContent = "Time Left" + countdown;
+    timerStart.textContent = "Time Left" + countdown + "s";
     duration = setInterval(function() {
         if (countdown > 0) {
            reduceTime(-1); 
@@ -110,7 +135,7 @@ function reduceTime(remaining) {
     if (countdown < 0) {
         countdown = 0;
     }
-    timerStart.textContent = "Time Left" + countdown;
+    timerStart.textContent = "Time Left" + countdown + "s";
 }
 
 
