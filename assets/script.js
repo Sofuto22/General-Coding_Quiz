@@ -44,14 +44,14 @@ let questions = [{
  }];
 
  let timerStart = document.getElementById('timer');
- let questionBox = document.getElementById ('#quiz'); 
+ let questionBox = document.getElementById('#quiz'); 
  let startQuiz = document.getElementById('start');
  let countdown = 75;
  let duration;
 
 
  function timer() {
-    timerStart.textContent = "Time Left " + countdown +  "s";
+    timerStart.textContent = "Time Left: " + countdown +  " s";
     duration = setInterval(function() {
         if (countdown > 0) {
            reduceTime(-1); 
@@ -66,15 +66,8 @@ function reduceTime(remaining) {
     if (countdown < 0) {
         countdown = 0;
     }
-    timerStart.textContent = "Time Left " + countdown + "s";
+    timerStart.textContent = "Time Left: " + countdown + " s";
 }
-
-
-
-
-
-
-
 
 
  startQuiz.onclick = timer;
@@ -142,7 +135,7 @@ let answerClick = function(event) {
   }
 
 };
- 
+
  
  
  
