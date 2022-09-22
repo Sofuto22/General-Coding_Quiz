@@ -8,43 +8,43 @@ let questions = [{
 },
 
 {
-    q:" A very useful tool used during development and debugging for printing content to the debugger is?",
-    A:"Javascript",
-    B:"Terminal",
-    C:"for loops",
-    D:"console.log",
+    q: " A very useful tool used during development and debugging for printing content to the debugger is?",
+    A: "Javascript",
+    B: "Terminal",
+    C: "for loops",
+    D: "console.log",
     answer: "console.log",
 },
 
 {
-    q:"Commly used data types do not include?",
-    A:"Strings",
-    B:"Booleans",
-    C:"Alerts",
-    D:"Numbers",
+    q: "Commly used data types do not include?",
+    A: "Strings",
+    B: "Booleans",
+    C: "Alerts",
+    D: "Numbers",
     answer: "Alerts",
 },
  
 {   
-    q:"Arrays in Javascript can be used to store ___?",
-    A:"Booleans",
-    B:"Other Arrays",
-    C:"Numbers/Strings",
-    D:"All the above",
+    q: "Arrays in Javascript can be used to store ___?",
+    A: "Booleans",
+    B: "Other Arrays",
+    C: "Numbers/Strings",
+    D: "All the above",
     answer: "All the above",
  },
  
  {
-    q:"The condition in an if/else statement is enclosed with ___?", 
-    A:"Curly Brackets",
-    B:"Quotes",
-    C:"Square Brackets",
-    D:"Parenthesis",
+    q: "The condition in an if/else statement is enclosed with ___?", 
+    A: "Curly Brackets",
+    B: "Quotes",
+    C: "Square Brackets",
+    D: "Parenthesis",
     answer: "Parenthesis",
  }];
 
  let timerStart = document.getElementById('timer');
- let questionBox = document.getElementById('#quiz'); 
+ let quizBox = document.querySelector("#quiz");
  let startQuiz = document.getElementById('start');
  let countdown = 75;
  let duration;
@@ -70,12 +70,13 @@ function reduceTime(remaining) {
 }
 
 
- startQuiz.onclick = timer;
- let questionStart = function(question) {
-    questionBox.innerHTML = '';
+
  
-    let header = document.createElement('h2');
-    header.textContent = question.q;
+ let questionStart = function (question) {
+    quizBox.innerHTML = "";
+ 
+    let quizHeader = document.createElement('h2');
+    quizHeader.textContent = question.q;
 
     let result1 = document.createElement('button');
     result1.textContent = question.a;
@@ -93,12 +94,14 @@ function reduceTime(remaining) {
     result4.textContent = question.d;
     result4.addEventListener('click', answerClick);
 
-    questionBox.appendChild(header);
-    questionBox.appendChild(result1);
-    questionBox.appendChild(result2);
-    questionBox.appendChild(result3);
-    questionBox.appendChild(result4);
+    quizBox.appendChild(quizHeader);
+    quizBox.appendChild(result1);
+    quizBox.appendChild(result2);
+    quizBox.appendChild(result3);
+    quizBox.appendChild(result4);
 }
+
+
 
 let questionIndex = 0;
 let playerScore = 0;
@@ -136,8 +139,11 @@ let answerClick = function(event) {
 
 };
 
- 
- 
+startQuiz.addEventListener("click", function(){
+    timer();
+    questionStart();
+});
+
  
  
  
