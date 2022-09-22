@@ -139,6 +139,14 @@ let answerClick = function(event) {
 
 };
 
+
+
+
+
+
+
+
+
 startQuiz.addEventListener("click", function(){
     timer();
     questionStart();
