@@ -50,7 +50,34 @@ let questions = [{
  let duration;
 
 
-timerStart.onclick = timer;
+ function timer() {
+    timerStart.textContent = "Time Left " + countdown +  "s";
+    duration = setInterval(function() {
+        if (countdown > 0) {
+           reduceTime(-1); 
+        } else {
+            quizOver();
+        }
+    }, 1000);
+}
+
+function reduceTime(remaining) {
+    countdown += remaining;
+    if (countdown < 0) {
+        countdown = 0;
+    }
+    timerStart.textContent = "Time Left " + countdown + "s";
+}
+
+
+
+
+
+
+
+
+
+ startQuiz.onclick = timer;
  let questionStart = function(question) {
     questionBox.innerHTML = '';
  
@@ -86,21 +113,32 @@ let correctChoice = questions[questionIndex].answer;
 let recentScores =  document.getElementById('scores');
 
 let answerClick = function(event) {
+    
     let playerAnswer = event.target.textContent;
     correctChoice = questions[questionIndex].answer;
+    
     let playerChoice = document.querySelector('#points');
+    
     if (playerAnswer !== correctChoice) {
         reduceTime(-15);
         playerChoice.textContent = 'Incorrect';
         questionIndex++;
+    
     if (questionIndex >= questions.length) {
         finishQuiz();
+    
     } else {questionStart(questions[questionIndex])};   
-  } else if (playerAnswer === correctChoice) {
+ 
+
+    } else if (playerAnswer === correctChoice) {
     questionIndex++;
     correctChoice.textContent = 'Correct';
     playerScore++;
     
+    if (questionIndex >= questions.length) {
+        finishQuiz();
+    } else {questionStart(questions[questionIndex])};
+
   }
 
 };
@@ -119,26 +157,6 @@ let answerClick = function(event) {
  
  
  
- function timer() {
-    timerStart.textContent = "Time Left" + countdown + "s";
-    duration = setInterval(function() {
-        if (countdown > 0) {
-           reduceTime(-1); 
-        } else {
-            quizOver();
-        }
-    }, 1000);
-}
-
-function reduceTime(remaining) {
-    countdown += remaining;
-    if (countdown < 0) {
-        countdown = 0;
-    }
-    timerStart.textContent = "Time Left" + countdown + "s";
-}
-
-
 
 
 
