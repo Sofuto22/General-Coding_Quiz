@@ -1,4 +1,4 @@
-let questions = [{
+var questions = [{
     q: "String values must be enclosed within ___ when being assigned to a variable.",
     A: "Commas",
     B: "Curly Brackets",
@@ -138,6 +138,18 @@ let answerClick = function(event) {
   }
 
 };
+
+var quiz = function(event) {
+    event.preventDefault();
+    resetDisplay();
+    renderQuestion(questions[questionIndex]);
+};
+
+function resetDisplay() {
+    quizBox.innerHTML="";
+    document.querySelector("#guidelines").style.display = "none";
+}
+
 
 
 
